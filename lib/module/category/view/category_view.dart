@@ -14,21 +14,10 @@ class CategoryView extends StatefulWidget {
     return Scaffold(
       backgroundColor: Color(0xffF5F7FA),
       appBar: AppBar(
-        title: Row(
-          children: [
-            const Icon(
-              Icons.arrow_back,
-              size: 24.0,
-            ),
-            const SizedBox(
-              width: 16.0,
-            ),
-            Text(
-              "Diabates Care",
-              style: primaryTextStyle.copyWith(
-                  fontWeight: FontWeight.bold, fontSize: 19),
-            ),
-          ],
+        title: Text(
+          "Diabates Care",
+          style: primaryTextStyle.copyWith(
+              fontWeight: FontWeight.bold, fontSize: 19),
         ),
         backgroundColor: Color(0xffF5F7FA),
         actions: const [],
@@ -103,7 +92,7 @@ class CategoryView extends StatefulWidget {
                       padding: EdgeInsets.all(15),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: (176 / 260),
+                        childAspectRatio: (176 / 246),
                         crossAxisCount: 2,
                         mainAxisSpacing: 1,
                         crossAxisSpacing: 5,
@@ -112,7 +101,16 @@ class CategoryView extends StatefulWidget {
                       shrinkWrap: true,
                       physics: const ScrollPhysics(),
                       itemBuilder: (BuildContext context, int index) {
-                        return ItemCard();
+                        return InkWell(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProductDetailsView()),
+                            );
+                          },
+                          child: ItemCard(),
+                        );
                       },
                     ),
                   ],

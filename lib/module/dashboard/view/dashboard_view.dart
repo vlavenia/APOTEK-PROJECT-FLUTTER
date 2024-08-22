@@ -226,11 +226,26 @@ class DashboardView extends StatefulWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              "Deals Of the Day",
-                              style: primaryTextStyle.copyWith(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                            Container(
+                              padding: EdgeInsets.only(right: 32),
+                              width: MediaQuery.of(context).size.width,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Deals Of the Day",
+                                    style: primaryTextStyle.copyWith(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                  Text(
+                                    "More",
+                                    style: primaryTextStyle.copyWith(
+                                        color: Color(0xff00A59B), fontSize: 14),
+                                  )
+                                ],
                               ),
                             ),
                             const SizedBox(
