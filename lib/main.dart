@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       navigatorKey: Get.navigatorKey,
       theme: ThemeData(),
-      home: const MainNavigationView(),
+      home: const CategoryView(),
     );
   }
 }

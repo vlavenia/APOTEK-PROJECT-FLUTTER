@@ -1,7 +1,13 @@
 {
     "modules": [
         "main_navigation",
-        "dashboard"
+        "dashboard",
+        "category",
+        "product_details",
+        "cart",
+        "checkout",
+        "success",
+        "my_profile"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

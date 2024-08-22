@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:medhub/core.dart';
-import '../view/main_navigation_view.dart';
+import '../view/my_profile_view.dart';
 
-class MainNavigationController extends State<MainNavigationView> {
-  static late MainNavigationController instance;
-  late MainNavigationView view;
+class MyProfileController extends State<MyProfileView> {
+  static late MyProfileController instance;
+  late MyProfileView view;
 
   @override
   void initState() {
@@ -22,10 +22,4 @@ class MainNavigationController extends State<MainNavigationView> {
 
   @override
   Widget build(BuildContext context) => widget.build(context, this);
-
-  int selectedIndex = 0;
-  updateIndex(int newIndex) {
-    selectedIndex = newIndex;
-    setState(() {});
-  }
 }
