@@ -8,7 +8,6 @@ class RatingBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        
         Text(
           "4",
           style: greyTextStyle,

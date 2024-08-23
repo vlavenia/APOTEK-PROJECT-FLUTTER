@@ -16,18 +16,10 @@ class MainNavigationView extends StatefulWidget {
           index: controller.selectedIndex,
           children: [
             DashboardView(),
-            Container(
-              color: Colors.green,
-            ),
-            Container(
-              color: Colors.blue,
-            ),
-            Container(
-              color: Colors.blue,
-            ),
-            Container(
-              color: Colors.purple,
-            ),
+            NotificationView(),
+            AddView(),
+            CheckoutView(),
+            MyProfileView()
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

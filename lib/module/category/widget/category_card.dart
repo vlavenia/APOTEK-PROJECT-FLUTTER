@@ -11,7 +11,6 @@ class CategoryCard extends StatelessWidget {
         Card(
           color: Colors.white,
           child: Column(
-            
             children: [
               Container(
                 width: 178,

@@ -7,7 +7,9 @@
         "cart",
         "checkout",
         "success",
-        "my_profile"
+        "my_profile",
+        "notification",
+        "add"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,
