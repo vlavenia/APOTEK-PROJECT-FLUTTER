@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:medhub/core.dart';
+import 'package:medhub/module/checkout/widget/Radiowidget.dart';
 import 'package:medhub/module/checkout/widget/item_checkout.dart';
+import 'package:medhub/module/checkout/widget/listppayment_widget.dart';
 import '../controller/checkout_controller.dart';
 
 class CheckoutView extends StatefulWidget {
@@ -17,7 +19,7 @@ class CheckoutView extends StatefulWidget {
       ),
       body: SingleChildScrollView(
           child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -55,20 +57,120 @@ class CheckoutView extends StatefulWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
+            const SizedBox(
+              height: 15.0,
+            ),
             Container(
                 width: 321,
                 height: 93,
+                padding: EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(6),
+                  ),
+                  border: Border.all(
+                    width: 1.0,
+                    color: greyColor.withOpacity(0.1),
+                  ),
+                ),
                 child: Row(
-                  children: [],
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Home",
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          "(031) 555-024",
+                          style: greyTextStyle.copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          "Jl. Rajawali No. 02, Surabaya",
+                          style: greyTextStyle.copyWith(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Icon(Icons.edit, size: 16, color: greyColor),
+                  ],
                 )),
-            Row(children: []),
-            Text("Payment Method"),
-            Column(
-              children: [],
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                Icon(
+                  Icons.add,
+                  size: 12,
+                  color: greenColor,
+                ),
+                Text(
+                  "Add Text",
+                  style: greyTextStyle.copyWith(
+                    fontSize: 14,
+                    color: greenColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+                )
+              ]),
+            ),
+            Text(
+              "Payment Method",
+              style: primaryTextStyle.copyWith(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(6),
+                ),
+                border: Border.all(
+                  width: 1.0,
+                  color: greyColor.withOpacity(0.1),
+                ),
+              ),
+              child: ListppaymentWidget(),
             ),
             SizedBox(
               height: 21.0,
             ),
+            Container(
+              width: 327,
+              height: 50,
+              decoration: BoxDecoration(
+                color: primaryColor,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(56),
+                ),
+              ),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CheckoutView()),
+                  );
+                },
+                child: Center(
+                  child: Text("Place Order @ Rp 185.000",
+                      style: whiteTextStyle.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 16)),
+                ),
+              ),
+            )
           ],
         ),
       )),
