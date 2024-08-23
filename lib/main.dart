@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:medhub/state_util.dart';
 import 'package:medhub/core.dart';
 import 'package:flutter/material.dart';
@@ -17,8 +18,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       navigatorKey: Get.navigatorKey,
-      theme: ThemeData(),
-      home: const MainNavigationView(),
+      theme:ThemeData(
+        scaffoldBackgroundColor: const Color(0xffF5F7FA),
+       textTheme: GoogleFonts.robotoTextTheme(
+           Theme.of(context).textTheme,
+       ),
+      ),
+      home: const WellcomePresentation()
     );
   }
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 enum SingingCharacter { lafayette, jefferson }
 
 class RadioListTileExample extends StatefulWidget {

@@ -13,3 +13,5 @@ TextStyle greyTextStyle = GoogleFonts.overpass(
 TextStyle whiteTextStyle = GoogleFonts.overpass(fontWeight: FontWeight.w500);
 
 TextStyle sofiaTextStyle = GoogleFonts.overpass(color: greyColor, fontSize: 14);
+
+

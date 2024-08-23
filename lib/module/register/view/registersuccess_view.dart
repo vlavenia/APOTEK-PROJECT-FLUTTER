@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:medhub/core.dart';
-import '../controller/success_controller.dart';
+import 'package:medhub/core/theme/theme.dart';
+import 'package:medhub/module/main_navigation/view/main_navigation_view.dart';
 
-class SuccessView extends StatefulWidget {
-  const SuccessView({super.key});
+class RegisterSuccessView extends StatelessWidget {
+  const RegisterSuccessView({super.key});
 
-  Widget build(context, SuccessController controller) {
-    controller.view = this;
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -36,7 +36,7 @@ class SuccessView extends StatefulWidget {
                         ),
                         Column(
                           children: [
-                            Text("Thank You",
+                            Text("Phone Number Verified",
                                 style: primaryTextStyle.copyWith(
                                     fontWeight: FontWeight.bold, fontSize: 24)),
                             const SizedBox(
@@ -44,7 +44,7 @@ class SuccessView extends StatefulWidget {
                             ),
                             Text(
                               textAlign: TextAlign.center,
-                              "Your Order will be delivered with invoice #INV20240817. You can track the delivery in the order section.",
+                              "Congradulations, your phone number has been verified. You can start using the app",
                               style: primaryTextStyle.copyWith(fontSize: 14),
                             )
                           ],
@@ -71,7 +71,7 @@ class SuccessView extends StatefulWidget {
                       );
                     },
                     child: Center(
-                      child: Text("Continue Order",
+                      child: Text("CONTINUE",
                           style: whiteTextStyle.copyWith(
                               fontWeight: FontWeight.bold,
                               color: Colors.white,
@@ -86,7 +86,4 @@ class SuccessView extends StatefulWidget {
       ),
     );
   }
-
-  @override
-  State<SuccessView> createState() => SuccessController();
 }

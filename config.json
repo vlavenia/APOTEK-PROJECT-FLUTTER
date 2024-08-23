@@ -9,7 +9,9 @@
         "success",
         "my_profile",
         "notification",
-        "add"
+        "add",
+        "login",
+        "register"
     ],
     "module_directory_name": "module",
     "experimental_mode": false,

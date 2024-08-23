@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:medhub/core.dart';
+import 'package:medhub/module/dashboard/widget/carousel_widget.dart';
 import 'package:medhub/module/dashboard/widget/featured_menu.dart';
 import 'package:medhub/module/dashboard/widget/item_menu.dart';
+import 'package:medhub/module/dashboard/widget/listcategories_widget.dart';
 import 'package:medhub/widget/item_card.dart';
 import '../controller/dashboard_controller.dart';
 
@@ -13,13 +16,17 @@ class DashboardView extends StatefulWidget {
   Widget build(context, DashboardController controller) {
     controller.view = this;
     return Scaffold(
-        backgroundColor: Color(0xffF7FBFF),
-        // extendBodyBehindAppBar: true,
+        extendBodyBehindAppBar: true,
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 0,
+            elevation: 0.0,
+            automaticallyImplyLeading: false),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                height: 290,
+              SizedBox(
+                height: 285,
                 child: Stack(
                   children: [
                     Container(
@@ -36,8 +43,8 @@ class DashboardView extends StatefulWidget {
                           ],
                         ),
                         borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(20),
-                            bottomRight: Radius.circular(20)),
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +119,7 @@ class DashboardView extends StatefulWidget {
                             BoxShadow(
                               color: Color(0x19000000),
                               blurRadius: 24,
-                              offset: Offset(0, 11),
+                              offset: Offset(0, 1),
                             ),
                           ],
                           borderRadius: BorderRadius.all(
@@ -121,6 +128,7 @@ class DashboardView extends StatefulWidget {
                           color: Colors.white,
                         ),
                         child: Container(
+                          height: 60,
                           decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(56),
@@ -134,6 +142,11 @@ class DashboardView extends StatefulWidget {
                           ),
                           child: TextField(
                             decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Colors.transparent,
+                                ),
+                              ),
                               hintText: 'Search Medicine & Healthcare products',
                               hintStyle: greyTextStyle.copyWith(
                                 fontSize: 13,
@@ -169,147 +182,200 @@ class DashboardView extends StatefulWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              Container(
+                color: Color(0xffF5F7FA),
                 width: MediaQuery.of(context).size.width,
-                child: Container(
-                  margin: EdgeInsets.only(left: 32),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                child: Column(
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding:
+                          const EdgeInsets.only(bottom: 15, left: 27, top: 10),
+                      child: Text("Top Categories",
+                          style: primaryTextStyle.copyWith(
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                          )),
+                    ),
+                    const SizedBox(
+                      height: 15.0,
+                    ),
+                    SizedBox(
+                      height: 80,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          ItemMenu(),
+                          ItemMenu(),
+                          ItemMenu(),
+                          ItemMenu(),
+                          ItemMenu(),
+                          ItemMenu(),
+                          ItemMenu(),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    Builder(builder: (context) {
+                      List images = [
+                        "assets/images/bannerImage1.png",
+                        "assets/images/bannerImage1.png",
+                        "assets/images/bannerImage1.png",
+                      ];
+
+                      return Stack(
+                        children: [
+                          CarouselSlider(
+                            carouselController:
+                                controller.CarouselSliderControllers,
+                            options: CarouselOptions(
+                              height: 160.0,
+                              autoPlay: true,
+                              enlargeCenterPage: false,
+                              viewportFraction: 1.0,
+                              onPageChanged: (index, reason) {
+                                controller.currentIndex = index;
+                                controller.setState(() {});
+                              },
+                            ),
+                            items: images.map((imageUrl) {
+                              return Builder(
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    margin: const EdgeInsets.symmetric(
+                                        horizontal: 5.0),
+                                    decoration: BoxDecoration(
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(6.0),
+                                      ),
+                                    ),
+                                    child: Image.asset(
+                                      imageUrl,
+                                    ),
+                                  );
+                                },
+                              );
+                            }).toList(),
+                          ),
+                          Positioned(
+                            top: 125,
+                            left: 190,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: images.asMap().entries.map((entry) {
+                                bool isSelected =
+                                    controller.currentIndex == entry.key;
+                                return GestureDetector(
+                                  onTap: () =>
+                                      controller.CarouselSliderControllers
+                                          .animateToPage(entry.key),
+                                  child: Container(
+                                    width: isSelected ? 5.0 : 5.0,
+                                    height: 5.0,
+                                    margin: const EdgeInsets.only(
+                                      right: 6.0,
+                                      top: 12.0,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: isSelected
+                                          ? greenColor
+                                          : primaryColor.withOpacity(0.6),
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(12.0),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
+                          ),
+                        ],
+                      );
+                    }),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 27, top: 24, bottom: 6, right: 27),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Top Categories",
+                            "Deals Of the Day",
                             style: primaryTextStyle.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          const SizedBox(
-                            height: 15.0,
-                          ),
-                          SizedBox(
-                            height: 100,
-                            child: ListView(
-                              scrollDirection: Axis.horizontal,
-                              padding: EdgeInsets.all(9),
-                              children: [
-                                ItemMenu(),
-                                ItemMenu(),
-                                ItemMenu(),
-                                ItemMenu(),
-                                ItemMenu(),
-                              ],
-                            ),
+                          Text(
+                            "More",
+                            style: primaryTextStyle.copyWith(
+                                color: Color(0xff00A59B), fontSize: 14),
                           )
                         ],
                       ),
-                      const SizedBox(
-                        height: 25.0,
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(18.0),
+                    ),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    SizedBox(
+                      height: 269,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          const SizedBox(
+                            width: 27.0,
                           ),
-                        ),
-                        child: Image.asset(
-                          "assets/images/bannerImage1.png",
-                          width: 356,
-                          height: 140,
-                          fit: BoxFit.fill,
+                          ItemCard(),
+                          const SizedBox(
+                            width: 17.0,
+                          ),
+                          ItemCard(),
+                          const SizedBox(
+                            width: 27.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 24.0,
+                    ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: const EdgeInsets.only(left: 27),
+                      child: Text(
+                        "Featured Menu",
+                        style: primaryTextStyle.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(top: 45),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              padding: EdgeInsets.only(right: 32),
-                              width: MediaQuery.of(context).size.width,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Deals Of the Day",
-                                    style: primaryTextStyle.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  Text(
-                                    "More",
-                                    style: primaryTextStyle.copyWith(
-                                        color: Color(0xff00A59B), fontSize: 14),
-                                  )
-                                ],
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 16.0,
-                            ),
-                            Container(
-                              height: 269,
-                              child: ListView(
-                                scrollDirection: Axis.horizontal,
-                                children: [
-                                  ItemCard(),
-                                  const SizedBox(
-                                    width: 17.0,
-                                  ),
-                                  ItemCard(),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(top: 24),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    "Featured Menu",
-                                    style: primaryTextStyle.copyWith(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 16.0,
-                                  ),
-                                  Container(
-                                    height: 269,
-                                    child: ListView(
-                                      scrollDirection: Axis.horizontal,
-                                      children: [
-                                        FeaturedMenu(),
-                                        const SizedBox(
-                                          height: 16.0,
-                                        ),
-                                        FeaturedMenu(),
-                                        const SizedBox(
-                                          height: 16.0,
-                                        ),
-                                        FeaturedMenu(),
-                                        const SizedBox(
-                                          height: 16.0,
-                                        ),
-                                        FeaturedMenu(),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
+                    ),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
+                    SizedBox(
+                      height: 170,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          const SizedBox(
+                            width: 24,
+                          ),
+                          FeaturedMenu(),
+                          FeaturedMenu(),
+                          FeaturedMenu(),
+                          FeaturedMenu(),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              )
+              ),
             ],
           ),
         ));

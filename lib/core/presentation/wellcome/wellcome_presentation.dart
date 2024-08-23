@@ -1,6 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:medhub/core.dart';
+import 'package:medhub/core/presentation/wellcome/buttonlogin_widget.dart';
+import 'package:medhub/core/theme/theme.dart';
 
 class WellcomePresentation extends StatelessWidget {
   const WellcomePresentation({super.key});
@@ -42,51 +45,54 @@ class WellcomePresentation extends StatelessWidget {
           const SizedBox(
             height: 34.0,
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Color(0xff0F3759),
-              borderRadius: BorderRadius.all(
-                Radius.circular(56),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => RegisterView()),
+              );
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xff0F3759),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(56),
+                ),
               ),
-            ),
-            width: 311,
-            height: 50,
-            child: Center(
-              child: Text(
-                textAlign: TextAlign.center,
-                "SIGN UP WITH EMAIL",
-                style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 22.0,
-          ),
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color.fromRGBO(9, 15, 71, 0.45),
-              ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(56),
-              ),
-            ),
-            width: 311,
-            height: 50,
-            child: Center(
-              child: Text(
-                textAlign: TextAlign.center,
-                "CONTINUE WITH FACEBOOK",
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 13,
+              width: 311,
+              height: 50,
+              child: Center(
+                child: Text(
+                  textAlign: TextAlign.center,
+                  "SIGN UP WITH EMAIL",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16),
                 ),
               ),
             ),
           ),
+          const SizedBox(
+            height: 12.0,
+          ),
+          ButtonLoginWidgget(),
+          ButtonLoginWidgget(),
+          const SizedBox(
+            height: 15.0,
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => LoginView()),
+              );
+            },
+            child: Text(
+              "LOGIN",
+              style: greyTextStyle.copyWith(fontSize: 15),
+            ),
+          )
         ],
       ),
     ));
