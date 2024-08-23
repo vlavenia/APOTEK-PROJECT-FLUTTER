@@ -18,7 +18,7 @@ class MainNavigationView extends StatefulWidget {
             DashboardView(),
             NotificationView(),
             AddView(),
-            CheckoutView(),
+            CartView(),
             MyProfileView()
           ],
         ),
