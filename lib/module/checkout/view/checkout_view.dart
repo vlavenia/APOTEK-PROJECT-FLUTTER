@@ -159,7 +159,7 @@ class CheckoutView extends StatefulWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => CheckoutView()),
+                    MaterialPageRoute(builder: (context) => SuccessView()),
                   );
                 },
                 child: Center(
