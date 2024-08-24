@@ -87,7 +87,8 @@ class LoginView extends StatefulWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => DashboardView()),
+                      MaterialPageRoute(
+                          builder: (context) => MainNavigationView()),
                     );
                   },
                   child: Center(
@@ -117,9 +118,18 @@ class LoginView extends StatefulWidget {
                       const SizedBox(
                         width: 12.0,
                       ),
-                      Text(
-                        "Don’t have an account? Sign Up",
-                        style: greyTextStyle,
+                      InkWell(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterView()),
+                          );
+                        },
+                        child: Text(
+                          "Don’t have an account? Sign Up",
+                          style: greyTextStyle,
+                        ),
                       ),
                     ],
                   )),

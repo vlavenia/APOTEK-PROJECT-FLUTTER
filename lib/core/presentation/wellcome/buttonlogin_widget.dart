@@ -3,7 +3,13 @@
 import 'package:flutter/material.dart';
 
 class ButtonLoginWidgget extends StatelessWidget {
-  const ButtonLoginWidgget({super.key});
+  ButtonLoginWidgget({
+    super.key,
+    this.image,
+    required this.title,
+  });
+  final image;
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class ButtonLoginWidgget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              "assets/icon/facebook_icon.png",
+              "assets/"+image,
               width: 28,
               height: 28,
               fit: BoxFit.fill,
@@ -34,7 +40,7 @@ class ButtonLoginWidgget extends StatelessWidget {
             ),
             Text(
               textAlign: TextAlign.center,
-              "CONTINUE WITH FACEBOOK",
+              "CONTINUE WITH "+title,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 13,

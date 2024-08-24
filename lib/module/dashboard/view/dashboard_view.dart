@@ -208,13 +208,36 @@ class DashboardView extends StatefulWidget {
                           const SizedBox(
                             width: 30,
                           ),
-                          ItemMenu(),
-                          ItemMenu(),
-                          ItemMenu(),
-                          ItemMenu(),
-                          ItemMenu(),
-                          ItemMenu(),
-                          ItemMenu(),
+                          ItemMenu(
+                            nameImage: "icon/dental_icon.png",
+                            title: "Dental",
+                            color1: Color(0xffFF9598),
+                            color2: Color(0xffFF70A7),
+                          ),
+                          ItemMenu(
+                            nameImage: "icon/wellness_icon.png",
+                            title: "Wellnes",
+                            color1: Color(0xff15BD92),
+                            color2: Color(0xff15BD92),
+                          ),
+                          ItemMenu(
+                            nameImage: "icon/homeo_icon.png",
+                            title: "Homeo",
+                            color1: Color(0xffFFC06F),
+                            color2: Color(0xffFF793A),
+                          ),
+                          ItemMenu(
+                            nameImage: "icon/eyecare_icon.png",
+                            title: "Eye Care",
+                            color1: Color(0xff4DB7FF),
+                            color2: Color(0xff3E7DFF),
+                          ),
+                          ItemMenu(
+                            nameImage: "icon/skinhair_icon.png",
+                            title: "Skin & Hair",
+                            color1: Color(0xff828282),
+                            color2: Color(0xff090F47),
+                          ),
                         ],
                       ),
                     ),
@@ -330,11 +353,19 @@ class DashboardView extends StatefulWidget {
                           const SizedBox(
                             width: 27.0,
                           ),
-                          ItemCard(),
+                          ItemCard(
+                            nameImage: "images/item1.png",
+                            title: "Accu-check Active\nTest Strip",
+                            price: "Rp 112.000",
+                          ),
                           const SizedBox(
                             width: 17.0,
                           ),
-                          ItemCard(),
+                          ItemCard(
+                            nameImage: "images/item2.png",
+                            title: "Omron HEM-8712\nBP Monitor",
+                            price: "Rp 150.000",
+                          ),
                           const SizedBox(
                             width: 27.0,
                           ),
@@ -366,10 +397,22 @@ class DashboardView extends StatefulWidget {
                           const SizedBox(
                             width: 24,
                           ),
-                          FeaturedMenu(),
-                          FeaturedMenu(),
-                          FeaturedMenu(),
-                          FeaturedMenu(),
+                          FeaturedMenu(
+                            nameImage: "images/brand1.png",
+                            title: "Himlaya\nWelnes",
+                          ),
+                          FeaturedMenu(
+                            nameImage: "images/brand2.png",
+                            title: "Accu\nCheck",
+                          ),
+                          FeaturedMenu(
+                            nameImage: "images/brand3.png",
+                            title: "Vlcc",
+                          ),
+                          FeaturedMenu(
+                            nameImage: "images/brand4.png",
+                            title: "Protinex",
+                          ),
                         ],
                       ),
                     ),

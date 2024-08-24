@@ -56,22 +56,38 @@ class CategoryView extends StatefulWidget {
                       height: 16.0,
                     ),
                     Container(
-                      height: 269,
+                      height: 180,
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
                           const SizedBox(
                             width: 19.0,
                           ),
-                          ItemCard(),
+                          CategoryCard(
+                            nameImage: "images/item7.png",
+                            title: "Sugar\nSubstitute",
+                          ),
                           SizedBox(
                             width: 16,
                           ),
-                          ItemCard(),
+                          CategoryCard(
+                            nameImage: "images/item8.png",
+                            title: "Juices &\nVinegars",
+                          ),
                           const SizedBox(
                             width: 16,
                           ),
-                          ItemCard(),
+                          CategoryCard(
+                            nameImage: "images/item9.png",
+                            title: "Vitamins\nMedicines",
+                          ),
+                          const SizedBox(
+                            width: 16,
+                          ),
+                          CategoryCard(
+                            nameImage: "images/item8.png",
+                            title: "Vitamins\nMedicines",
+                          ),
                         ],
                       ),
                     ),
@@ -79,43 +95,41 @@ class CategoryView extends StatefulWidget {
                 ),
               ),
               Container(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 24, top: 15),
-                      child: Text("All Product",
-                          style: primaryTextStyle.copyWith(
-                              fontWeight: FontWeight.bold, fontSize: 19)),
-                    ),
-                    GridView.builder(
-                      padding: EdgeInsets.all(15),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        childAspectRatio: (176 / 246),
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 1,
-                        crossAxisSpacing: 5,
-                      ),
-                      itemCount: 4,
-                      shrinkWrap: true,
-                      physics: const ScrollPhysics(),
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => ProductDetailsView()),
-                            );
-                          },
-                          child: ItemCard(),
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.only(left: 24, top: 15, bottom: 25),
+                child: Text(
+                  "All Product",
+                  style: primaryTextStyle.copyWith(
+                      fontWeight: FontWeight.w700, fontSize: 19),
+                ),
+              ),
+              Container(
+                child: GridView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.8,
+                  ),
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ProductDetailsView()),
                         );
                       },
-                    ),
-                  ],
+                      child: ItemCard(
+                        nameImage: "images/item1.png",
+                        title: "Accu-check Active\nTest Strip",
+                        price: "Rp 112.000",
+                      ),
+                    );
+                  },
                 ),
-              )
+              ),
             ],
           ),
         ),

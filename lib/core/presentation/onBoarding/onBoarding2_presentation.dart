@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medhub/core.dart';
-import 'package:medhub/core/presentation/onBoarding/onBoarding2_presentation.dart';
 
-class Onboarding1Presentation extends StatelessWidget {
-  const Onboarding1Presentation({super.key});
+class Onboarding2Presentation extends StatelessWidget {
+  const Onboarding2Presentation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +14,7 @@ class Onboarding1Presentation extends StatelessWidget {
           children: [
             Container(
               child: Image.asset(
-                "assets/images/onBoarding1.png",
+                "assets/images/onBoarding2.png",
                 width: 256.3,
                 height: 284,
                 // fit: BoxFit.fill,
@@ -28,7 +27,7 @@ class Onboarding1Presentation extends StatelessWidget {
               children: [
                 Text(
                   textAlign: TextAlign.center,
-                  "View and buy\nMedicine online",
+                  "Online medical &\nHealthcare",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
@@ -46,7 +45,7 @@ class Onboarding1Presentation extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                const SizedBox(
+                SizedBox(
                   height: 100.0,
                 ),
                 Padding(
@@ -54,18 +53,22 @@ class Onboarding1Presentation extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(""),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text("Back"),
+                      ),
                       TextButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    Onboarding2Presentation()),
+                                builder: (context) => WellcomePresentation()),
                           );
                         },
                         child: Text(
-                          "Next,",
+                          "Next",
                           style: primaryTextStyle.copyWith(
                             color: greenColor,
                             fontWeight: FontWeight.bold,

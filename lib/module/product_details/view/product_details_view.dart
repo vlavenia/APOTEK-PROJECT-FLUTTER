@@ -283,6 +283,34 @@ class ProductDetailsView extends StatefulWidget {
                     )
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              Container(
+                width: 327,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: primaryColor,
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(56),
+                  ),
+                ),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CartView()),
+                    );
+                  },
+                  child: Center(
+                    child: Text("Go To Cart",
+                        style: whiteTextStyle.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                            fontSize: 16)),
+                  ),
+                ),
               )
             ],
           ),

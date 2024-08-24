@@ -3,17 +3,20 @@ import 'package:medhub/core.dart';
 import 'package:medhub/core/theme/theme.dart';
 
 class ItemMenu extends StatelessWidget {
-  const ItemMenu({super.key});
+  ItemMenu({
+    super.key,
+    required this.nameImage,
+    required this.title,
+    required this.color1,
+    required this.color2,
+  });
+  final nameImage;
+  String title;
+  Color color1;
+  Color color2;
 
   @override
   Widget build(BuildContext context) {
-    List images = [
-      "assets/icon/dental_icon.png"
-          "assets/icon/dental_icon.png"
-          "assets/icon/dental_icon.png"
-          "assets/icon/dental_icon.png"
-          "assets/icon/dental_icon.png"
-    ];
     return InkWell(
       onTap: () {
         Navigator.push(
@@ -29,22 +32,22 @@ class ItemMenu extends StatelessWidget {
             Container(
               height: 52,
               width: 52,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Color(0xffFF9598),
-                    Color(0xffFF70A7),
+                    color1,
+                    color2,
                   ],
                 ),
               ),
-              child: const Padding(
+              child: Padding(
                 padding: EdgeInsets.all(15),
                 child: ImageIcon(
                   AssetImage(
-                    "assets/icon/dental_icon.png",
+                    'assets/' + nameImage,
                   ),
                   color: Colors.white,
                   size: 16,
@@ -55,7 +58,7 @@ class ItemMenu extends StatelessWidget {
               height: 8.0,
             ),
             Text(
-              "Dental",
+              title,
               style: primaryTextStyle.copyWith(
                 fontSize: 11,
                 color: primaryColor.withOpacity(0.95),

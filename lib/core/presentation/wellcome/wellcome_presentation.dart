@@ -76,8 +76,14 @@ class WellcomePresentation extends StatelessWidget {
           const SizedBox(
             height: 12.0,
           ),
-          ButtonLoginWidgget(),
-          ButtonLoginWidgget(),
+          ButtonLoginWidgget(
+            image: "icon/facebook_icon.png",
+            title: "FACEBOOK",
+          ),
+          ButtonLoginWidgget(
+            image: "icon/google_icon.png",
+            title: "GOOGLE",
+          ),
           const SizedBox(
             height: 15.0,
           ),

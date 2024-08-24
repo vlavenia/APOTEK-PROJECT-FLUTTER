@@ -13,12 +13,12 @@ class ListcategoriesWidget extends StatelessWidget {
         padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,
         children: [
-          ItemMenu(),
-          ItemMenu(),
-          ItemMenu(),
-          ItemMenu(),
-          ItemMenu(),
-          ItemMenu(),
+          // ItemMenu(),
+          // ItemMenu(),
+          // ItemMenu(),
+          // ItemMenu(),
+          // ItemMenu(),
+          // ItemMenu(),
         ],
       ),
     );

@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:medhub/core/theme/theme.dart';
 
 class FeaturedMenu extends StatelessWidget {
-  const FeaturedMenu({super.key});
+  FeaturedMenu({
+    super.key,
+    required this.nameImage,
+    required this.title,
+  });
+  final nameImage;
+  String title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,13 +29,14 @@ class FeaturedMenu extends StatelessWidget {
                   ),
                 ],
               ),
-              width: 100,
-              height: 100,
+              width: 80,
+              height: 80,
               child: Center(
                 child: Image.asset(
-                  "assets/images/brand1.png",
-                  width: 80,
-                  height: 80,
+                  "assets/" + nameImage,
+                  width: 50,
+                  height: 50,
+                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
@@ -42,7 +49,7 @@ class FeaturedMenu extends StatelessWidget {
                   Container(
                     child: Text(
                       textAlign: TextAlign.center,
-                      "Himalaya\nWelnes",
+                      title,
                       style: primaryTextStyle.copyWith(
                           fontSize: 15, fontWeight: FontWeight.w400),
                     ),

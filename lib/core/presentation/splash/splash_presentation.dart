@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:medhub/core/presentation/onBoarding/onBoarding1_presentation.dart';
+import 'package:medhub/module/login/view/login_view.dart';
+import 'package:splash_view/source/presentation/widgets/done.dart';
 
-class SplashPresentation extends StatelessWidget {
-  const SplashPresentation({super.key});
+class SplashPresentation extends StatefulWidget {
+  const SplashPresentation({super.key, required Done done});
+
+  @override
+  State<SplashPresentation> createState() => _SplashPresentationState();
+}
+
+class _SplashPresentationState extends State<SplashPresentation> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsFlutterBinding.ensureInitialized();
+    Future.delayed(const Duration(seconds: 3), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => Onboarding1Presentation()),
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -1,11 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:medhub/core/theme/theme.dart';
+import 'package:medhub/module/cart/controller/cart_controller.dart';
 
-class ItemCheckout extends StatelessWidget {
-  const ItemCheckout({super.key});
+class ItemCheckout extends StatefulWidget {
+  ItemCheckout({super.key});
+
+  @override
+  State<ItemCheckout> createState() => _ItemCheckoutState();
+}
+
+class _ItemCheckoutState extends State<ItemCheckout> {
+  int quantity = 0;
+
+  void incrementQuantity() {
+    setState(() {
+      quantity++;
+    });
+  }
+
+  void decrementQuantity() {
+    setState(() {
+      if (quantity > 0) {
+        quantity--;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    var quantityController = CartController();
     return Container(
       margin: EdgeInsets.symmetric(vertical: 16),
       height: 116,
@@ -59,44 +82,50 @@ class ItemCheckout extends StatelessWidget {
                         height: 18.0,
                       ),
                       Container(
-                        // width: 95,
                         color: Color(0xffF1FFEA),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: 38,
-                              height: 38,
-                              decoration: BoxDecoration(
-                                color: greenColor,
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(10),
-                                child: ImageIcon(
-                                  AssetImage(
-                                    "assets/icon/min_icon.png",
+                            InkWell(
+                              onTap: decrementQuantity,
+                              child: Container(
+                                width: 38,
+                                height: 38,
+                                decoration: BoxDecoration(
+                                  color: greenColor,
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: ImageIcon(
+                                    AssetImage(
+                                      "assets/icon/min_icon.png",
+                                    ),
+                                    size: 12,
+                                    color: Colors.white,
                                   ),
-                                  size: 12,
-                                  color: Colors.white,
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 38,
-                              height: 38,
-                              decoration: BoxDecoration(
-                                color: Color(0xff0F3759),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(10),
-                                child: ImageIcon(
-                                  AssetImage(
-                                    "assets/icon/add_icon2.png",
+                            Text(quantity.toString()),
+                            InkWell(
+                              onTap: incrementQuantity,
+                              child: Container(
+                                width: 38,
+                                height: 38,
+                                decoration: BoxDecoration(
+                                  color: Color(0xff0F3759),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: const Padding(
+                                  padding: EdgeInsets.all(10),
+                                  child: ImageIcon(
+                                    AssetImage(
+                                      "assets/icon/add_icon2.png",
+                                    ),
+                                    size: 12,
+                                    color: Colors.white,
                                   ),
-                                  size: 12,
-                                  color: Colors.white,
                                 ),
                               ),
                             ),
